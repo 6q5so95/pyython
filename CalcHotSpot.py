@@ -17,24 +17,26 @@ class CalcHotSpot:
     def _CalcTimeInterval(self, update_day: datetime, date_now: datetime) -> float:
         """
         Args:
-            HopSpot測定開始基準日 (datetime)
+            update_day(datetime): HopSpot測定開始基準日
+            date_now(datetime):   本日日付（テストのやりやすさからパラメータ化）
         Returns:
             float : it算出結果
         Raises:
             例外の名前: 例外の説明 (例 : 引数が指定されていない場合に発生 )
         Examples:
-            >>> self_calcTimeInterval (hotspot_start_day)
+            >>> self_calcTimeInterval (hotspot_start_day, date_now)
         Note:
             datetime.datetime及びdatetime.timedeltaのimport
                 >> from datetime import datetime
                 >> from datetime import timedalta
         """    
         
-        # 本日日付情報
+        # TODO 日付相関チェック
+        # date_now >= update_day >= hotspot_start_day 
     
         # ti値を算出
         return  float((update_day - self.start_hotspot_day + timedelta(days=1)).days) / \
-                float((date_now - self.start_hotspot_day + timedelta(days=1)).days)
+                float((date_now   - self.start_hotspot_day + timedelta(days=1)).days)
     
     
     def CalcHotSpotValue(self, updateDays:datetime) -> Tuple[float, float]:
