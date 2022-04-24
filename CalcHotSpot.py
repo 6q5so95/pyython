@@ -13,6 +13,7 @@ class CalcHotSpot:
     def __init__(self, start_hotspot_day):
         self.start_hotspot_day = start_hotspot_day
     
+    
     def _CalcTimeInterval(self, update_day: datetime) -> float:
         """
         Args:
@@ -35,6 +36,7 @@ class CalcHotSpot:
         # ti値を算出
         return  float((update_day - self.start_hotspot_day + timedelta(days=1)).days) / \
                 float((NOW - self.start_hotspot_day + timedelta(days=1)).days)
+    
     
     def CalcHotSpotValue(self, updateDays:datetime) -> Tuple[float, float]:
         """
