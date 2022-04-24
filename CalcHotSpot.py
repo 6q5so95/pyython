@@ -8,9 +8,6 @@ class CalcHotSpot:
         修正が行われた時点のタイムスタンプでコードが生成されたときを0、現在を1と置いてその間の少数値をとります。
         つまり、12月1日にコードを書き始め、今日が12月30日であるとすると、15日にバグフィクスをしたらti=0.5になります。
         
-        Examples:
-            >> hotspot = CalcHotSpot(HOTSPOT_STARTDATE)
-            >> ti = self._CalcTimeInterval(updateDays)
     """    
     
     def __init__(self, start_hotspot_day):
@@ -48,17 +45,16 @@ class CalcHotSpot:
         Raises:
             例外の名前: 例外の説明 (例 : 引数が指定されていない場合に発生 )
         Examples:
+            >> hotspot = CalcHotSpot(HOTSPOT_STARTDATE)
             >> for _ in LIST_UPDATE_DATES:
             >>    ti, hs = hotspot.CalcHotSpotValue(_)
             >>    print(f'ti = {ti:9.05} hs = {hs:9.05f}')
         See:
             ti値計算Class内部定義関数
-            _CalcTimeInterval(self, update_day: datetime) 
+            self._CalcTimeInterval(update_day) 
         Note:
-
         """    
-        
-        
+
         # TimeIntervalとHotSpot値を算出
         ti = self._CalcTimeInterval(updateDays)
         hs = 1.0 / (1 + np.exp(-12*ti+12))
