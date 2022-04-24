@@ -10,7 +10,7 @@ class CalcHotSpot:
         
     """    
     
-    def __init__(self, start_hotspot_day):
+    def __init__(self, start_hotspot_day:datetime) -> None:
         self.start_hotspot_day = start_hotspot_day
         
     def CalcHotSpotValue(self, updateDays:datetime, date_now:datetime) -> Tuple[float, float]:
