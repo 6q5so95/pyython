@@ -18,5 +18,5 @@ class CalcHotSpot:
     def CalcHotSpotValue(self, updateDays:datetime) -> Tuple[float, float]:
         # TimeIntervalとHotSpot値を算出
         ti = self._CalcTimeInterval(updateDays)
-        y = 1.0 / (1 + np.exp(-12*ti+12))
-        return ti, y
+        hs = 1.0 / (1 + np.exp(-12*ti+12))
+        return ti, hs
