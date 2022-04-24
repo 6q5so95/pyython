@@ -14,7 +14,7 @@ class CalcHotSpot:
         self.start_hotspot_day = start_hotspot_day
     
     
-    def _CalcTimeInterval(self, update_day: datetime) -> float:
+    def _CalcTimeInterval(self, update_day: datetime, date_now: datetime) -> float:
         """
         Args:
             HopSpot測定開始基準日 (datetime)
@@ -31,11 +31,10 @@ class CalcHotSpot:
         """    
         
         # 本日日付情報
-        NOW = datetime.now()
     
         # ti値を算出
         return  float((update_day - self.start_hotspot_day + timedelta(days=1)).days) / \
-                float((NOW - self.start_hotspot_day + timedelta(days=1)).days)
+                float((date_now - self.start_hotspot_day + timedelta(days=1)).days)
     
     
     def CalcHotSpotValue(self, updateDays:datetime) -> Tuple[float, float]:
