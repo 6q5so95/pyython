@@ -99,7 +99,6 @@ def getYahooFinanceData() -> dict:
     return _dfs
 
 def loadFinanceDataToPostgres(dfs: dict) -> None:
-
     # Postgresは小文字でテーブル作成が必要
     for _SIMBOL, _df in dfs.items():
         SIMBOL = _SIMBOL.lower().replace('^','')
