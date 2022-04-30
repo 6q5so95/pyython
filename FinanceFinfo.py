@@ -18,11 +18,11 @@ from sqlalchemy import create_engine
 ##########################################
 # データベースの接続情報
 connection_config = { 
-    'user': 'datamanager',
+    'user': '******',
     'password': '********',
-    'host': 'localhost',
+    'host': '*******',
     'port': '*******',
-    'database': '*******'
+    'database': '******'
 }
 
 # engin生成
@@ -78,23 +78,23 @@ def getYahooFinanceData() -> dict:
 
     # Data取得
     for _SIMBOL in SIMBOL_YAHOO_FINANCE:
-         FILE_PATH_YAHOO_FINANCE = f'https://query1.finance.yahoo.com/v7/finance/download/{_SIMBOL}?period1={START_DATE_UNIXTIME}&period2={TODAY_UNIXTIME}&interval=1d&events=history&includeAdjustedClose=true'
-         try:
-             df = pd.read_csv(
-                     FILE_PATH_YAHOO_FINANCE,
-                     parse_dates=['Date'],
-                     )
+        FILE_PATH_YAHOO_FINANCE = f'https://query1.finance.yahoo.com/v7/finance/download/{_SIMBOL}?period1={START_DATE_UNIXTIME}&period2={TODAY_UNIXTIME}&interval=1d&events=history&includeAdjustedClose=true'
+        try:
+            df = pd.read_csv(
+                    FILE_PATH_YAHOO_FINANCE,
+                    parse_dates=['Date'],
+                    )
         except Exception as e:
             print(f'Yahoo Financeからのデータ取得に失敗しました')
             print(f'e: {e}')
             sys.exit(1)
 
-         # EDA
-         ## 終値のみで評価する
-         df = df[['Date', 'Close']]
+        # EDA
+        ## 終値のみで評価する
+        df = df[['Date', 'Close']]
 
         # データ積み上げ
-         _dfs[_SIMBOL] = df
+        _dfs[_SIMBOL] = df
 
     return _dfs
 
@@ -102,7 +102,7 @@ def loadFinanceDataToPostgres(dfs: dict) -> None:
 
     # Postgresは小文字でテーブル作成が必要
     for _SIMBOL, _df in dfs.items():
-        SIMBOL = _SIMBOL.lower().replace('^',''))
+        SIMBOL = _SIMBOL.lower().replace('^','')
         _df.to_sql(SIMBOL, con=engine, if_exists='replace', index=False)
 
 
