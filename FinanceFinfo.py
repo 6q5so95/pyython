@@ -36,7 +36,7 @@ SIMBOL_FRED = ['DFII10']
 SIMBOL_YAHOO_FINANCE = [
         '^NDX', # NASDAQ100
         'SOXL', # SOX BULL☓3
-        'vED',  # エネルギー
+        'VED',  # エネルギー
         'VPD',  # 公共事業
         'VDC',  # 生活必需品
         'VFH',  # 金融
