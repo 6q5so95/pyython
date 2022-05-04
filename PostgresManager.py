@@ -23,3 +23,35 @@ class PostgresManager:
             sys.exit(1)
         
         return engine
+
+def main():    
+    # 使い方    
+    connection_config = {
+        'user': 'postgres',
+        'password': 'xxxxxxxxxxxxxxxx',
+        'host': 'localhost',
+        'port': 'xxxx',
+        'database': 'xxxxxx'
+    }
+
+    # インスタンス生成
+    postgres = PostgresManager(**connection_config)
+
+    # engine取得
+    engine = postgres.createEngine()
+
+    # dataframeからPostgresへデータロード（例）
+    data.to_sql('apachelog', con=engine, if_exists='replace', index=False)
+
+# 起動
+if __name__ == '__main__':
+    main()
+    
+
+
+    
+    
+    
+   
+    
+    
