@@ -25,6 +25,8 @@ def parse_datetime(x):
     Due to problems parsing the timezone (`%z`) with `datetime.strptime`, the
     timezone will be obtained using the `pytz` library.
     '''
+    
+    # 実態に応じて日付フォーマットを定義する必要がある
     dt = datetime.strptime(x[1:-7], '%d/%b/%Y:%H:%M:%S')
     dt_tz = int(x[-6:-3])*60+int(x[-3:-1])
     return dt.replace(tzinfo=pytz.FixedOffset(dt_tz))
