@@ -16,7 +16,7 @@ class PostgresManager:
 
         # engine 生成
         try:
-            engine = create_engine(f"{engineString}".format(**self._connParam))
+            engine = create_engine(f"{engineString}".format(**self._connParam), echo=True)
         except Exception as e:
             print('Postgres接続に失敗しました')
             print(f'err: {e}')
