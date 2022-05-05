@@ -16,7 +16,6 @@ class PostgresManager:
 
         # engine 生成
         try:
-            # if_exists : {‘fail’, ‘replace’, ‘append’}, default ‘fail’
             engine = create_engine(f"{engineString}".format(**self._connParam), echo=True)
         except Exception as e:
             print('Postgres接続に失敗しました')
@@ -42,6 +41,7 @@ def main():
     engine = postgres.createEngine()
 
     # dataframeからPostgresへデータロード（例）
+    # if_exists : {‘fail’, ‘replace’, ‘append’}, default ‘fail’
     data.to_sql('apachelog', con=engine, if_exists='replace', index=False)
 
 # 起動
